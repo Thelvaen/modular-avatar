@@ -16,7 +16,7 @@ namespace nadena.dev.modular_avatar.core.editor
         private BlendshapeSelectWindow _window;
         private ReorderableList _list;
         private SerializedProperty _bindings,
-            _simpleMode,
+            _syncAllBlendshapes,
             _sourceRendererName;
 
         private Dictionary<Mesh, string[]> blendshapeNames = new Dictionary<Mesh, string[]>();
@@ -49,7 +49,7 @@ namespace nadena.dev.modular_avatar.core.editor
         private void OnEnable()
         {
             InitList();
-            _simpleMode = serializedObject.FindProperty(nameof(ModularAvatarBlendshapeSync.SimpleMode));
+            _syncAllBlendshapes = serializedObject.FindProperty(nameof(ModularAvatarBlendshapeSync.SyncAllBlendshapes));
             _sourceRendererName = serializedObject.FindProperty(nameof(ModularAvatarBlendshapeSync.SourceRendererName));
         }
 
@@ -256,8 +256,8 @@ namespace nadena.dev.modular_avatar.core.editor
         {
             serializedObject.Update();
 
-            EditorGUILayout.PropertyField(_simpleMode, G("blendshape.simple_mode"));
-            if (_simpleMode.boolValue)
+            EditorGUILayout.PropertyField(_syncAllBlendshapes, G("blendshape.sync_all"));
+            if (_syncAllBlendshapes.boolValue)
             {
                 EditorGUILayout.PropertyField(_sourceRendererName, G("blendshape.source_renderer"));
             }

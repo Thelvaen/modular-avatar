@@ -38,7 +38,7 @@ namespace nadena.dev.modular_avatar.core
     [HelpURL("https://modular-avatar.nadena.dev/docs/reference/blendshape-sync?lang=auto")]
     public class ModularAvatarBlendshapeSync : AvatarTagComponent
     {
-        public bool SimpleMode = true;
+        public bool SyncAllBlendshapes = true;
         public string SourceRendererName;
         public List<BlendshapeBinding> Bindings = new List<BlendshapeBinding>();
 
@@ -85,9 +85,9 @@ namespace nadena.dev.modular_avatar.core
             if (localMesh == null)
                 return;
 
-            // Simple mode
+            // Sync All Blendshapes
             // used to sync all blendshapes with the same name on both SkinnedMeshRenderers
-            if (this.SimpleMode)
+            if (this.SyncAllBlendshapes && !string.IsNullOrWhiteSpace(this.SourceRendererName))
             {
                 var AvatarRoot = RuntimeUtil.FindAvatarTransformInParents(this.transform);
                 if (AvatarRoot == null) return;
