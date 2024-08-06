@@ -38,10 +38,8 @@ namespace nadena.dev.modular_avatar.core
     [HelpURL("https://modular-avatar.nadena.dev/docs/reference/blendshape-sync?lang=auto")]
     public class ModularAvatarBlendshapeSync : AvatarTagComponent
     {
-        [SerializeField]
-        private bool SimpleMode = false;
-        [SerializeField]
-        private string SourceRendererName;
+        public bool SimpleMode = true;
+        public string SourceRendererName;
         public List<BlendshapeBinding> Bindings = new List<BlendshapeBinding>();
 
         struct EditorBlendshapeBinding
